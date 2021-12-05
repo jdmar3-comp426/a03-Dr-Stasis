@@ -105,7 +105,7 @@ export function removeKeys(object, keyList) {
    
    let clone = {...object};
    
-   for(const key in keyList) removeKeyNonDestructive(object, keyList[key]);
+   for(const key of keyList) removeKeyNonDestructive(object, keyList[key]);
    
    return clone;
 }
