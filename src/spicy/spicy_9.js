@@ -153,8 +153,8 @@ export const someEven = (arr, test) => {
  */
 export const filter = (arr, test) => {
     return {
-        fail: Array.from(arr).filter(x => !test(x)),
-        pass: Array.from(arr).filter(x => test(x))
+        pass: Array.from(arr).filter(x => test(x)),
+        fail: Array.from(arr).filter(x => !test(x))
     }
 };
 
