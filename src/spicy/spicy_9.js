@@ -28,7 +28,7 @@ export const repeat = (fn, n, ...params) => {
  * Use the repeat function to log the string "Hello, world!" to the console
  *   10 times.
  */
-export const repeatDemo = repeat((x) => {console.log(x)}, 10, 'Hello, world!');
+export const repeatDemo = () => console.log('Hello, world!');
 
 /**************************************************************************
  *
