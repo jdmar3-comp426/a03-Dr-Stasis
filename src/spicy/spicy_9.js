@@ -28,7 +28,7 @@ export const repeat = (fn, n, ...params) => {
  * Use the repeat function to log the string "Hello, world!" to the console
  *   10 times.
  */
-export const repeatDemo = () => console.log('Hello, world!');
+export const repeatDemo = () => repeat(x => console.log(x), 10, 'Hello, world!');
 
 /**************************************************************************
  *
@@ -60,7 +60,7 @@ export const tenTimes = x => multiplyBy(x)(10);
  * Write and export a function named "tenTimesFifty" which uses the tenTimes
  *   function to multiply 50 by 10 and returns the result.
  */
-export const tenTimesFifty = multiplyBy(50)(10);
+export const tenTimesFifty = () => multiplyBy(50)(10);
 
 
 /**************************************************************************
