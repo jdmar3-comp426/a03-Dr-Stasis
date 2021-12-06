@@ -1,5 +1,5 @@
 import mpg_data from "./data/mpg_data.js";
-import {getStatistics} from "./medium_1.js";
+import {getStatistics, getSum} from "./medium_1.js";
 
 /*
 This section can be done by using the array prototype functions.
@@ -20,9 +20,14 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: function() {
+        return {
+            city: getSum(mpg_data.map(d => d.city_mpg)) / mpg_data.length,
+            highway: getSum(mpg_data.map(d => d.highway_mpg)) / mpg_data.length 
+        }
+    },
+    allYearStats: () => getStatistics(mpg_data.map(d => d.model_year)),
+    ratioHybrids: () => mpg_data.filter(d => d.hybrid).length / mpg_data.length
 };
 
 
@@ -84,6 +89,31 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: function() {
+            
+        let arr = []  
+        let filtered = mpg_data.filter(e => e.hybrid);        
+        
+        for (let i in filtered){
+            
+            let make = filtered[i].make;
+            let id = filtered[i].id;
+            
+            let val = arr.find(e => {e[make]});
+                
+            if (val) Array.from(val[hybrids]).push(id);        
+            else { arr.push({ make: make, hybrids: [id] })
+
+            }
+        }
+
+        return arr.sort((a, b) => b.hybrids.length-a.hybrids.length)
+    },
+    avgMpgByYearAndHybrid: function(){
+
+        let obj = {};
+        
+        let years = [];
+
+    }
 };
